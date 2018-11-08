@@ -10,7 +10,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <!-- infrastructure -->
         <module>spring-boot-microservice-eureka</module>
+        <module>spring-boot-microservice-configuration-server</module>
+
+        <!-- business services -->
         <module>spring-boot-microservice-forex-service</module>
         <module>spring-boot-microservice-conversion-service</module>
     </modules>
