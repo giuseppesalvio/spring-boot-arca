@@ -6,4 +6,6 @@ spring:
     config:
       server:
         git:
-          uri: file://config
+          uri: http://ga-subsvn01:7990/scm/poc/spring-boot-microservices-configuration.git
+          username: Jenkins
+          password: pippo2017!
