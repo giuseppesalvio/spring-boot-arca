@@ -1,8 +1,15 @@
 server:
   port: 8500
 
-zuul:
-  routes:
-    currency-converter:
-      path: /currency-converter/**
-      url: http://localhost:8100/currency-converter-feign
+#zuul:
+#  routes:
+#    currency-converter:
+#      path: /currency-converter/**
+#      url: http://localhost:8100/currency-converter-feign
+
+eureka:
+  #  instance:
+  #    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
