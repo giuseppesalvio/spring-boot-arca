@@ -3,6 +3,7 @@ package com.arca.microservices.conversion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,12 @@ class CurrencyConversionController
 {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Autowired
+	private CurrencyExchangeServiceProxy proxy;
+
+	@Autowired
+	private Environment environment;
+
 	@GetMapping("/currency-converter/from/{from}/to/{to}/quantity/{quantity}")
 	public
 	CurrencyConversionBean convertCurrency(@PathVariable String from,
@@ -30,12 +37,12 @@ class CurrencyConversionController
 		uriVariables.put("from", from);
 		uriVariables.put("to", to);
 
-		ResponseEntity<CurrencyConversionBean> responseEntity = new RestTemplate().getForEntity(
+		ResponseEntity<ExchangeValue> responseEntity = new RestTemplate().getForEntity(
 			"http://localhost:8000/currency-exchange/from/{from}/to/{to}",
-			CurrencyConversionBean.class,
+			ExchangeValue.class,
 			uriVariables);
 
-		CurrencyConversionBean response = responseEntity.getBody();
+		ExchangeValue response = responseEntity.getBody();
 
 		return new CurrencyConversionBean(response.getId(),
 		                                  from,
@@ -43,11 +50,9 @@ class CurrencyConversionController
 		                                  response.getConversionMultiple(),
 		                                  quantity,
 		                                  quantity.multiply(response.getConversionMultiple()),
-		                                  response.getPort());
+		                                  response.getPort(),
+		                                  Integer.parseInt(environment.getProperty("local.server.port")));
 	}
-
-	@Autowired
-	private CurrencyExchangeServiceProxy proxy;
 
 	@GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public
@@ -56,7 +61,7 @@ class CurrencyConversionController
 	                                            @PathVariable BigDecimal quantity)
 	{
 
-		CurrencyConversionBean response = proxy.retrieveExchangeValue(from, to);
+		ExchangeValue response = proxy.retrieveExchangeValue(from, to);
 
 		logger.info("{}", response);
 
@@ -66,6 +71,7 @@ class CurrencyConversionController
 		                                  response.getConversionMultiple(),
 		                                  quantity,
 		                                  quantity.multiply(response.getConversionMultiple()),
-		                                  response.getPort());
+		                                  response.getPort(),
+		                                  Integer.parseInt(environment.getProperty("local.server.port")));
 	}
 }

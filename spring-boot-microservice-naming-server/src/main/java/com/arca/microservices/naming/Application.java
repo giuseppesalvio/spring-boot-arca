@@ -1,4 +1,4 @@
-package com.arca.microservices.eureka;
+package com.arca.microservices.naming;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

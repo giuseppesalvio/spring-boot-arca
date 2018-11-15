@@ -1,0 +1,8 @@
+server:
+  port: 8500
+
+zuul:
+  routes:
+    currency-converter:
+      path: /currency-converter/**
+      url: http://localhost:8100/currency-converter-feign

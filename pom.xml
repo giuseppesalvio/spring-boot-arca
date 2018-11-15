@@ -11,8 +11,9 @@
 
     <modules>
         <!-- infrastructure -->
-        <module>spring-boot-microservice-eureka</module>
+        <module>spring-boot-microservice-naming-server</module>
         <module>spring-boot-microservice-configuration-server</module>
+        <module>spring-boot-microservice-gateway-server</module>
 
         <!-- business services -->
         <module>spring-boot-microservice-forex-service</module>

@@ -1,4 +1,4 @@
-package com.arca.microservices.eureka;
+package com.arca.microservices.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
