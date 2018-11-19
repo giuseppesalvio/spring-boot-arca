@@ -9,5 +9,5 @@ zuul:
 
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: true
+    register-with-eureka: false
+    fetch-registry: true
