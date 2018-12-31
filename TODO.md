@@ -1,10 +1,56 @@
-Cose da introdurre
----
+# Cose da fare
 * Capire come intervengono i vari componenti (Feign, Ribbon, Eureka, Zuul)
-* Capire come configurare il bilanciamento (è lato client?)
+
+> ##### Feign
+> Semplifica la costruzione di client di webservices.
+> Si usano interfacce annotate, simili ai repository in Spring JPA.
+> Feign usa Ribbon.
+> 
+> ##### Eureka
+> Naming server.
+> 
+> ##### Ribbon
+> Client-side load balancer.
+> Basato su "named clients"
+> Fornisce:
+> * service discovery: usa Eureka di default
+> * load balancing: secondo regole out-of-the-box o customizzabili; fra quelle out-of-the-box abbiamo:
+>   * Simple Round Robin LB
+>   * Weighted Response Time LB
+>   * Zone Aware Round Robin LB
+>   * Random LB
+> * fault tolerance: usa Hystrix come circuit breaker
+> * caching
+> * multiple protocol (HTTP, TCP, UDP)
+> 
+> Info:
+> * [client-side-load-balancing](https://spring.io/guides/gs/client-side-load-balancing/)
+> * [spring-cloud-netflix-load-balancer](http://salerno-rafael.blogspot.com/2016/09/spring-cloud-netflix-load-balancer-with.html)
+> * [working-with-load-balancers](https://github.com/Netflix/ribbon/wiki/Working-with-load-balancers#components-of-load-balancer)
+> 
+> ##### Zuul
+> Application gateway.
+> Supporta authentication, routing, filtering, load balancing.
+> Si integra con Ribbon per il load balancing.
+> 
+> ##### Hystrix
+> Libreria per latency/fault tolerance.
+> Non più in sviluppo, solo mantenimento.
+
+* Capire come configurare il load balancing (è lato client?)
+
+> <client-name>.ribbon.NFLoadBalancerRuleClassName = ...
+
+Per la prossima demo
+--------------------
 * Capire come gestire l'hot swap di versione di un servizio
-* Config Eureka refresh a fronte di down srv
 * Front-end Angular
-* **Hystrix**: fault tolerance
+* (i servizi forex+conversion vanno bene)
+
+
+Altri temi
+----------
+* Config Eureka refresh a fronte di down srv
+* Config circuit breaker
 * **Spring Cloud Sleuth**: distributed tracing
 * **Zipkin**: tracing collector (HTTP server) -- usare spring-cloud-sleuth-zipkin

@@ -11,12 +11,13 @@
 
     <modules>
         <!-- infrastructure -->
-        <module>spring-boot-microservice-naming-server</module>
-        <module>spring-boot-microservice-configuration-server</module>
-        <module>spring-boot-microservice-gateway-server</module>
+        <module>configuration-server</module>
+        <module>eureka</module>
+        <module>zuul</module>
+        <!--<module>hystrix</module>-->
 
         <!-- business services -->
-        <module>spring-boot-microservice-forex-service</module>
-        <module>spring-boot-microservice-conversion-service</module>
+        <module>forex-service</module>
+        <module>conversion-service</module>
     </modules>
 </project>

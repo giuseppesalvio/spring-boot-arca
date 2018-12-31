@@ -1,0 +1,17 @@
+server:
+  port: 8500
+
+zuul:
+  routes:
+    convert-currency:
+      path: /convert-currency/**
+      serviceId: currency-conversion-service
+
+currency-conversion-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
