@@ -19,5 +19,8 @@
         <!-- business services -->
         <module>forex-service</module>
         <module>conversion-service</module>
+
+        <!-- frontend applications -->
+        <module>conversion-gui</module>
     </modules>
 </project>

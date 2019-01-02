@@ -1,3 +1,9 @@
 target
 .idea
+dist
+tmp
+out-tsc
+node
+node_modules
+npm-debug.log
 *.iml
