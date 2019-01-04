@@ -75,7 +75,7 @@ export class AppComponent {
     }
 
     private conversionServiceUrl (fromCurrency: string, toCurrency: string, amount: string) {
-        return `${environment.zuulServerUrl}/convert-currency/convert-currency/from/${fromCurrency}/to/${toCurrency}/quantity/${amount}`;
+        return `${environment.zuulServerUrl}/convert-currency/from/${fromCurrency}/to/${toCurrency}/quantity/${amount}`;
     }
 }
 

@@ -1,7 +1,5 @@
 package com.arca.microservices.conversion.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,32 +12,27 @@ import java.math.BigDecimal;
 public
 class CurrencyConversionController
 {
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired
-	private CurrencyExchangeServiceProxy proxy;
+	private ForexServiceProxy proxy;
 
 	@Autowired
 	private Environment environment;
 
 	@GetMapping("/convert-currency/from/{from}/to/{to}/quantity/{quantity}")
 	public
-	CurrencyConversionBean convertCurrency(@PathVariable String from,
-	                                       @PathVariable String to,
-	                                       @PathVariable BigDecimal quantity)
+	CurrencyConversion convertCurrency(@PathVariable String from,
+	                                   @PathVariable String to,
+	                                   @PathVariable BigDecimal quantity)
 	{
-		ExchangeValue response = proxy.retrieveExchangeValue(from, to);
-
-		logger.info("{}", response);
-
-		return new CurrencyConversionBean(response.getId(),
-		                                  from,
-		                                  to,
-		                                  response.getConversionMultiple(),
-		                                  quantity,
-		                                  quantity.multiply(response.getConversionMultiple()),
-		                                  response.getPort(),
-		                                  localServerPort());
+		ForexServiceResponse response = proxy.retrieveExchangeValue(from, to);
+		return new CurrencyConversion(response.getId(),
+		                              from,
+		                              to,
+		                              response.getConversionMultiple(),
+		                              quantity,
+		                              quantity.multiply(response.getConversionMultiple()),
+		                              response.getPort(),
+		                              localServerPort());
 	}
 
 	private
