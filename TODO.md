@@ -47,6 +47,7 @@ Per la prossima demo
 * (i servizi forex+conversion vanno bene)
 * Capire come gestire l'hot swap di versione di un servizio
 * Front-end Angular
+* Spring Session
 
 Altri temi
 ----------
