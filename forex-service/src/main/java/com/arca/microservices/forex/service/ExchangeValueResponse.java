@@ -1,4 +1,4 @@
-package com.arca.microservices.conversion.service;
+package com.arca.microservices.forex.service;
 
 import lombok.Data;
 
@@ -6,9 +6,8 @@ import java.math.BigDecimal;
 
 @Data
 public
-class ForexServiceResponse
+class ExchangeValueResponse
 {
-	private Long       id;
 	private String     from;
 	private String     to;
 	private BigDecimal exchangeRate;

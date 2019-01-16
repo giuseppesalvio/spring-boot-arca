@@ -1,4 +1,4 @@
-package com.arca.microservices.forex.service;
+package com.arca.microservices.conversion.service;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 
 @Configuration
 public
-class ForexDataSourceConfiguration
+class DataSourceConfiguration
 {
 	@Bean
 	@Primary

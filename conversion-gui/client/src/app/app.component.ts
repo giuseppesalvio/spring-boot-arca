@@ -33,35 +33,30 @@ import { environment } from "../environments/environment";
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-2">Calculated Amount:</div>
-                <div class="col-sm-10">{{conversionServiceResponse?.totalCalculatedAmount}}</div>
+                <div class="col-sm-2">Converted Amount:</div>
+                <div class="col-sm-10">{{conversionServiceResponse?.convertedAmount}}</div>
             </div>
             <div class="row">
                 <div class="col-sm-2">Converter Service Port:</div>
-                <div class="col-sm-10">{{conversionServiceResponse?.converterPort}}</div>
+                <div class="col-sm-10">{{conversionServiceResponse?.conversionServicePort}}</div>
             </div>
             <div class="row">
                 <div class="col-sm-2">Forex Service Port:</div>
-                <div class="col-sm-10">{{conversionServiceResponse?.forexPort}}</div>
+                <div class="col-sm-10">{{conversionServiceResponse?.forexServicePort}}</div>
             </div>
         </div>
     `
 })
 export class AppComponent {
-    public conversionTypes: Array<ConversionType> = [
-        {
-            from: 'USD', to: 'INR'
-        }, {
-            from: 'EUR', to: 'INR'
-        }, {
-            from: 'AUD', to: 'INR'
-        }
-    ];
+    public conversionTypes: Array<ConversionType>;
     public selectedConversionType: ConversionType;
     public amount: string;
     public conversionServiceResponse: ConversionServiceResponse;
 
     constructor (private http: HttpClient) {
+        this.http.get(this.exchangeListServiceUrl()).subscribe((response: Array<ConversionType>) => {
+            this.conversionTypes = response;
+        });
     }
 
     public onSubmit () {
@@ -74,8 +69,12 @@ export class AppComponent {
         });
     }
 
+    private exchangeListServiceUrl () {
+        return `${environment.zuulServerUrl}/forex/exchange/list`;
+    }
+
     private conversionServiceUrl (fromCurrency: string, toCurrency: string, amount: string) {
-        return `${environment.zuulServerUrl}/convert-currency/from/${fromCurrency}/to/${toCurrency}/quantity/${amount}`;
+        return `${environment.zuulServerUrl}/conversion/convert-currency/from/${fromCurrency}/to/${toCurrency}/amount/${amount}`;
     }
 }
 
@@ -85,7 +84,7 @@ interface ConversionType {
 }
 
 interface ConversionServiceResponse {
-    totalCalculatedAmount: number;
-    forexPort: number;
-    converterPort: number;
+    convertedAmount: number;
+    forexServicePort: number;
+    conversionServicePort: number;
 }

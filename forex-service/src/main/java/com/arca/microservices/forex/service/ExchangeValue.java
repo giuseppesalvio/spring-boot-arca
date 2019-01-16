@@ -18,6 +18,5 @@ class ExchangeValue
 	private String     from;
 	@Column(name = "currency_to")
 	private String     to;
-	private BigDecimal conversionMultiple;
-	private int        port;
+	private BigDecimal exchangeRate;
 }

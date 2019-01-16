@@ -1,7 +1,6 @@
 package com.arca.microservices.conversion.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,31 +12,14 @@ public
 class CurrencyConversionController
 {
 	@Autowired
-	private ForexServiceProxy proxy;
+	private CurrencyConversionService service;
 
-	@Autowired
-	private Environment environment;
-
-	@GetMapping("/convert-currency/from/{from}/to/{to}/quantity/{quantity}")
+	@GetMapping("/convert-currency/from/{from}/to/{to}/amount/{amount}")
 	public
 	CurrencyConversion convertCurrency(@PathVariable String from,
 	                                   @PathVariable String to,
-	                                   @PathVariable BigDecimal quantity)
+	                                   @PathVariable BigDecimal amount)
 	{
-		ForexServiceResponse response = proxy.retrieveExchangeValue(from, to);
-		return new CurrencyConversion(response.getId(),
-		                              from,
-		                              to,
-		                              response.getConversionMultiple(),
-		                              quantity,
-		                              quantity.multiply(response.getConversionMultiple()),
-		                              response.getPort(),
-		                              localServerPort());
-	}
-
-	private
-	int localServerPort()
-	{
-		return Integer.parseInt(environment.getProperty("local.server.port"));
+		return service.convertAmount(from, to, amount);
 	}
 }

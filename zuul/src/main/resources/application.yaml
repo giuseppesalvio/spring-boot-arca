@@ -3,13 +3,12 @@ server:
 
 zuul:
   routes:
-    conversion-service:
-      path: /**
+    conversion:
+      path: /conversion/**
       serviceId: conversion-service
-
-currency-conversion-service:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    forex:
+      path: /forex/**
+      serviceId: forex-service
 
 eureka:
   client:
