@@ -56,8 +56,9 @@
         <module>configuration-server</module>
         <module>eureka</module>
         <module>zuul</module>
-        <module>cloud-dashboard</module>
+        <module>spring-boot-admin</module>
         <module>jdbc-http-session</module>
+        <module>zipkin</module>
         <!--<module>hystrix</module>-->
 
         <!-- business services -->
