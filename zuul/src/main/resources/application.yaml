@@ -3,9 +3,9 @@ server:
 
 zuul:
   routes:
-    convert-currency:
+    conversion-service:
       path: /**
-      serviceId: currency-conversion-service
+      serviceId: conversion-service
 
 currency-conversion-service:
   ribbon:
