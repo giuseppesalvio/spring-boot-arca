@@ -42,17 +42,17 @@
 > <client-name>.ribbon.NFLoadBalancerRuleClassName = ...
 > ribbon.NFLoadBalancerRuleClassName = ...
 
-Per la prossima demo
---------------------
-* (i servizi forex+conversion vanno bene)
+Cose fatte per la demo
+----------------------
 * Capire come gestire l'hot swap di versione di un servizio
 * Front-end Angular
 * Spring Session
 * **Spring Cloud Sleuth**: distributed tracing
 * **Zipkin**: tracing collector (HTTP server con UI)
 
-Altri temi
-----------
+Cose da vedere ancora
+---------------------
+* Pattern transazioni distribuite
 * Config Eureka refresh a fronte di down srv
 * Config circuit breaker
 ** Capire come evitare HTTP 504 in caso di down di servizio (LB non redirige il traffico immediatamente sulle istanze superstiti)
