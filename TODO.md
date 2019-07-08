@@ -1,4 +1,4 @@
-# Cose da fare
+# Cose fatte
 * Capire come intervengono i vari componenti (Feign, Ribbon, Eureka, Zuul)
 
 > ##### Feign
@@ -38,21 +38,30 @@
 > Non più in sviluppo, solo mantenimento.
 
 * Come configurare il load balancing
+> `<client-name>.ribbon.NFLoadBalancerRuleClassName = ...`
+> `ribbon.NFLoadBalancerRuleClassName = ...`
 
-> <client-name>.ribbon.NFLoadBalancerRuleClassName = ...
-> ribbon.NFLoadBalancerRuleClassName = ...
+* Preparare progetto POC
+> [Struttura progetto](https://docs.google.com/drawings/d/1l7Am3nHJqjSYvjKBUiroqssNSLQzXHb-j8noKkNNUUU/edit?usp=sharing)
 
-Cose fatte per la demo
-----------------------
 * Capire come gestire l'hot swap di versione di un servizio
+> [Strategia](https://docs.google.com/drawings/d/1qhWYa_wOuLFtjJWA4nvn-6mlHM7JoMRukRHXvyyeSew/edit?usp=sharing)
+
 * Front-end Angular
 * Spring Session
 * **Spring Cloud Sleuth**: distributed tracing
 * **Zipkin**: tracing collector (HTTP server con UI)
 
+* Studiare SAGA pattern (transazioni distribuite)
+> * Events/choreography:
+>   * [happy-path](https://blog.couchbase.com/wp-content/uploads/2018/01/Screen-Shot-2018-01-09-at-6.13.39-PM-768x817.png)
+>   * [rollback-on-error](https://blog.couchbase.com/wp-content/uploads/2018/01/Screen-Shot-2018-01-09-at-6.36.17-PM-768x526.png)
+> * Command/Orchestration:
+>   * [happy-path](https://blog.couchbase.com/wp-content/uploads/2018/01/Screen-Shot-2018-01-11-at-7.40.54-PM-768x470.png)
+>   * [rollback-on-error](https://blog.couchbase.com/wp-content/uploads/2018/01/Screen-Shot-2018-01-11-at-7.41.06-PM-768x489.png)
+
 Cose da vedere ancora
 ---------------------
-* Pattern transazioni distribuite
 * Config Eureka refresh a fronte di down srv
 * Config circuit breaker
 ** Capire come evitare HTTP 504 in caso di down di servizio (LB non redirige il traffico immediatamente sulle istanze superstiti)
