@@ -1,0 +1,21 @@
+GET http://localhost:8000/exchange/list
+
+###
+
+GET http://localhost:8000/session/set
+Cookie: {{session-cookie}}
+
+> {%
+client.global.set("session-cookie", response.headers.valueOf("Set-Cookie"));
+%}
+
+###
+
+GET http://localhost:8001/session/get
+Cookie: {{session-cookie}}
+
+###
+
+GET http://localhost:8000/exchange/from/USD/to/INR
+
+###

@@ -28,11 +28,11 @@ class SpringSessionDataSourceConfiguration
 
 	@Bean
 	@SpringSessionDataSource
-	@ConfigurationProperties("spring.session.datasource.configuration")
 	public
 	DataSource springSessionDataSource()
 	{
-		return springSessionDataSourceProperties().initializeDataSourceBuilder().build();
+		return springSessionDataSourceProperties().initializeDataSourceBuilder()
+		                                          .build();
 	}
 
 	@Bean

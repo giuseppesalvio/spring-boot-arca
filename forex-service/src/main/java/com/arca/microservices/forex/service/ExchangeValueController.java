@@ -16,7 +16,8 @@ class ExchangeValueController
 
 	@GetMapping("/exchange/from/{from}/to/{to}")
 	public
-	ExchangeValueResponse retrieveExchangeValue(@PathVariable String from, @PathVariable String to)
+	ExchangeValueResponse retrieveExchangeValue(@PathVariable String from,
+	                                            @PathVariable String to)
 	{
 		return service.getExchangeValue(from, to);
 	}
