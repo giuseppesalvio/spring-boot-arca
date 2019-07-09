@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public
 interface ForexServiceProxy
 {
-	@GetMapping("/exchange")
-	ForexServiceResponse retrieveExchangeValue();
-
 	@GetMapping("/exchange/from/{from}/to/{to}")
-	ForexServiceResponse retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
+	ForexServiceResponse retrieveExchangeValue(@PathVariable("from") String from,
+	                                           @PathVariable("to") String to);
 }

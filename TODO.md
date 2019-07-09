@@ -1,5 +1,5 @@
 # Cose fatte
-* Capire come intervengono i vari componenti (Feign, Ribbon, Eureka, Zuul)
+* Capire come intervengono i vari componenti (Feign, Ribbon, Eureka, Zuul, Hystrix, Zipkin)
 
 > ##### Feign
 > Semplifica la costruzione di client di webservices.
@@ -36,6 +36,12 @@
 > ##### Hystrix
 > Libreria per latency/fault tolerance.
 > Non più in sviluppo, solo mantenimento.
+>
+> ##### Zipkin
+> Applicazione per distributed tracing.
+> Si tratta di un log collector: registra sequenze di chiamate HTTP fra applicazioni.
+> Contiene un motore di ricerca per individuare trace specifici.
+> Registra dipendenze fra servizi in base al traffico osservato in una finestra temporale specificata.
 
 * Come configurare il load balancing
 > `<client-name>.ribbon.NFLoadBalancerRuleClassName = ...`
