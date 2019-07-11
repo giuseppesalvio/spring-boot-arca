@@ -19,3 +19,11 @@ Cookie: {{session-cookie}}
 GET http://localhost:8000/exchange/from/USD/to/INR
 
 ###
+
+GET http://localhost:8100/convert-currency/from/USD/to/INR/amount/1
+
+###
+
+GET http://localhost:8500/conversion/convert-currency/from/USD/to/INR/amount/1
+
+###

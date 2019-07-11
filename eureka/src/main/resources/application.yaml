@@ -7,4 +7,6 @@ eureka:
     fetch-registry: false
   instance:
     lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
+    lease-expiration-duration-in-seconds: 30
+  server:
+    renewalPercentThreshold: 0.25
