@@ -19,9 +19,11 @@
 >   * Weighted Response Time LB
 >   * Zone Aware Round Robin LB
 >   * Random LB
+>   * Retry (con Round Robin di default)
 > * fault tolerance: usa Hystrix come circuit breaker
 > * caching
 > * multiple protocol (HTTP, TCP, UDP)
+> * circuit breaker
 > 
 > Info:
 > * [client-side-load-balancing](https://spring.io/guides/gs/client-side-load-balancing/)
@@ -55,7 +57,8 @@
 
 * Front-end Angular
 * Spring Session
-* **Spring Cloud Sleuth**: distributed tracing
+> Configurato DB condiviso da tutte le istanze/applicazioni (H2 con AUTO_SERVER)
+* **Spring Cloud Sleuth**: distributed tracing (intercetta chiamate HTTP e invia trace a Zipkin)
 * **Zipkin**: tracing collector (HTTP server con UI)
 
 * Studiare SAGA pattern (transazioni distribuite)
