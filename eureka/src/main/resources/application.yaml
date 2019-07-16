@@ -5,8 +5,8 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-  instance:
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 30
   server:
-    renewalPercentThreshold: 0.25
+    enable-self-preservation: true
+    renewal-percent-threshold: 0.85 # This value is used to calculate the expected heartbeats per minute.
+    eviction-interval-timer-in-ms: 5000 # A scheduler is run at this frequency which will evict instances from the registry if the lease of the instances are expired as configured by lease-expiration-duration-in-seconds. Setting this value too long will delay the system entering into self-preservation mode.
+    renewal-threshold-update-interval-ms: 60000 # A scheduler is run at this frequency which calculates the expected heartbeats per minute.

@@ -11,7 +11,7 @@
 > 
 > ##### Ribbon
 > Client-side load balancer.
-> Basato su "named clients"
+> Basato su "named clients".
 > Fornisce:
 > * service discovery: usa Eureka di default
 > * load balancing: secondo regole out-of-the-box o customizzabili; fra quelle out-of-the-box abbiamo:

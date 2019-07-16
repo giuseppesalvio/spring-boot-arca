@@ -1,0 +1,14 @@
+server:
+  port: 9411
+
+# The bean 'characterEncodingFilter', defined in class path resource [zipkin/autoconfigure/ui/ZipkinUiAutoConfiguration.class], could not be registered. A bean with that name has already been defined in class path resource [org/springframework/boot/ Autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class] and overriding is disabled.
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+# IllegalArgumentException: Prometheus requires that all meters with the same name have the same set of tag keys.
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
