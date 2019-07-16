@@ -1,17 +1,6 @@
 server:
   port: 8500
 
-zuul:
-  retryable: true
-  routes:
-    conversion:
-      path: /conversion/**
-      serviceId: conversion-service
-    forex:
-      path: /forex/**
-      serviceId: forex-service
-
 eureka:
   client:
     register-with-eureka: false
-    fetch-registry: true
